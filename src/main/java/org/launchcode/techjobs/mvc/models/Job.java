@@ -4,8 +4,9 @@ import java.util.Objects;
 
 public class Job {
 
-    private int id;
+    private final int id;
     private static int nextId = 1;
+
 
     private String name;
     private Employer employer;
@@ -19,6 +20,10 @@ public class Job {
         nextId++;
     }
 
+    public int getId() {
+        return id;
+    }
+
     // Initialize the id and value fields.
     public Job(String aName, Employer anEmployer, Location aLocation, PositionType aPositionType, CoreCompetency aCoreCompetency) {
         this();
@@ -30,9 +35,9 @@ public class Job {
     }
 
     // Custom toString method.
-    @Override
+    String output = "";
     public String toString(){
-        String output = "";
+
         if (name.equals("")){
             name = "Data not available";
         }
@@ -57,7 +62,6 @@ public class Job {
                 "Core Competency: %s\n", id, name, employer, location, positionType, coreCompetency);
         return output;
     }
-
     // Custom equals and hashCode methods. Two Job objects are "equal" when their id fields match.
     @Override
     public boolean equals(Object o) {
@@ -74,11 +78,6 @@ public class Job {
 
 
     // Getters and setters.
-
-    public int getId() {
-        return id;
-    }
-
     public String getName() {
         return name;
     }
@@ -86,6 +85,7 @@ public class Job {
     public void setName(String name) {
         this.name = name;
     }
+
 
     public Employer getEmployer() {
         return employer;
@@ -103,12 +103,16 @@ public class Job {
         this.location = location;
     }
 
+
     public PositionType getPositionType() {
         return positionType;
     }
 
     public void setPositionType(PositionType positionType) {
         this.positionType = positionType;
+    }
+    public static int getNextId() {
+        return nextId;
     }
 
     public CoreCompetency getCoreCompetency() {
